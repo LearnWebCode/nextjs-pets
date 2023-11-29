@@ -29,7 +29,7 @@ export default function EditForm(props) {
   async function handleFileChange(e) {
     const data = new FormData()
     data.append("file", e.target.files[0])
-    data.append("api_key", "333336538864615")
+    data.append("api_key", process.env.NEXT_PUBLIC_CLOUDINARYKEY)
     data.append("signature", initialSignature)
     data.append("timestamp", timestamp)
 

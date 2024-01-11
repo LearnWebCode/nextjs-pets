@@ -19,6 +19,14 @@ const sanitizeOptions = {
 export async function POST(request) {
   const incoming = await request.json()
 
+  if (typeof incoming.name != "string") {
+    incoming.name = ""
+  }
+
+  if (typeof incoming.description != "string") {
+    incoming.description = ""
+  }
+  
   let ourObject = { name: sanitizeHtml(incoming.name, sanitizeOptions), birthYear: new Date().getFullYear(), species: sanitizeHtml(incoming.species, sanitizeOptions), description: sanitizeHtml(incoming.description, sanitizeOptions) }
 
   if (incoming.birthYear > 999 && incoming.birthYear < 9999) {
